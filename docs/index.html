@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velvius</title>
   <style>
     body {
       background-color: #000;
       color: #00ffcc;
       font-family: "Courier New", Courier, monospace;
-      line-height: 1.75;
-      margin: 0;
-      padding: 2rem 1rem;
+      line-height: 1.6;
+      margin: 40px auto;
+      padding: 0 2rem;
+      max-width: 800px;
+      text-align: justify;
     }
-
-    p {
-      margin-bottom: 1.5rem;
+    pre {
+      white-space: pre-wrap;
+      font-family: monospace;
+      line-height: 1.2;
+      margin-bottom: 1rem;
     }
-
-    h1 {
-      border-bottom: 2px solid #00ffcc;
-      padding-bottom: 0.5rem;
-      font-size: 2rem;
-      margin-bottom: 2rem;
+    .ascii-logo span {
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
-
-    h2 {
-      font-size: 1.5rem;
-      margin-top: 4rem;
-      margin-bottom: 1.5rem;
+    h1, h2 {
+      border-bottom: 1px solid #666;
+      padding-bottom: 0.25rem;
+      margin-top: 2.5rem;
+      color: #00ffcc;
+      font-weight: normal;
     }
-
     a {
       color: #ff66cc;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
-    header {
-      margin-bottom: 4rem;
-    }
-
-    section {
-      margin-bottom: 5rem;
-    }
-
     ul {
       list-style: square;
-      padding-left: 1.25rem;
+      margin-left: 1.25rem;
     }
-
-    li {
-      margin-bottom: 0.75rem;
-    }
-
     footer {
-      border-top: 1px solid #222;
-      padding-top: 2rem;
-      font-size: 0.9rem;
-      color: #999;
+      border-top: 1px solid #666;
+      margin-top: 4rem;
+      padding-top: 1rem;
+      color: #666;
+      text-align: center;
     }
-
+    .social-label {
+      color: #666;
+    }
+    .connect p {
+      margin: 0.1rem 0;
+    }
     .corner-gif {
       position: fixed;
       top: 10px;
@@ -73,36 +67,26 @@
       z-index: 999;
       pointer-events: none;
     }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 1.25rem;
-      }
-
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      h2 {
-        font-size: 1.2rem;
-      }
-
-      .corner-gif {
-        width: 70px;
-      }
-
-      p {
-        margin-bottom: 1.25rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <img src="IMG_0112.GIF" alt="floating gif" class="corner-gif" />
+  <img src="IMG_0112.GIF" alt="floating gif" class="corner-gif">
 
-  <header>
-    <h1>Velvius</h1>
-    <p>Transmitting altered states from deep-space Miami. A hyperreal archive of sonic distortion, rave metaphysics, and lucid rhythm. Everything here is a hallucination made audible.</p>
+  <header class="ascii-logo">
+    <pre><span>                                                                                             
+                                                                                             
+         %%         %%  %%%%%%%%%% %%          %%         %% %%  %%          %%   %%%%%%%%%         
+         %%        %%   %          %%          %%        %%  %%  %%          %% %%@       %         
+         %%       %%    %          %%          %%       %%   %%  %%          %% %%                  
+         %%      %%     %          %%          %%      %%    %%  %%          %% %%                  
+         %%     %%      %          %%          %%     %%     %%  %%          %%   %%%               
+         %%    %%       %%%%%%%%   %%          %%    %%      %%  %%          %%      @%%%%          
+         %%   %%        %          %%          %%   %%       %%  %%          %%          @%%        
+         %%  %%         %          %%          %%  %%        %%  %%          %%            %@       
+         %% %%          %          %%          %% %%         %%   %%        %%  %%        %%        
+         %%%%           %          %%          %%%%          %%    %%%    @%%    %%%    %%%         
+         @%%            %%%%%%%%%% %%%%%%%%%%% %%@            %       %%%%%         %%%%            
+    </span></pre>
   </header>
 
   <section>
@@ -117,16 +101,19 @@
     <h2>About</h2>
     <p>Velvius is about urgency—like he’s playing as if his life depends on it, and somehow he’s still smiling through the tears. His sets hit hard but leave you better than they found you. They carry that rush of being alive at the exact right moment in time—when everything around you blurs into shadows, and all that’s left is the sound, the pulse, and the world inside his head pulling you into it.</p>
     <p>You are here, reading this, because trillions of impossible moments aligned perfectly. Your breath is a rhythm. Your thoughts are electricity. You are standing on the edge of infinity, and the fact that you exist at all is the rarest thing the universe has ever done.</p>
-    <p>
-      📍 Miami, FL<br/>
-      📧 Contact: <a href="mailto:devinzspace@me.com">devinzspace@me.com</a><br/>
-      🔊 SoundCloud: <a href="https://soundcloud.com/aliendevinmoonbeam" target="_blank">soundcloud.com/aliendevinmoonbeam</a><br/>
-      🍎 Apple Music: <a href="https://music.apple.com/profile/DevinZspace" target="_blank">music.apple.com/profile/DevinZspace</a>
-    </p>
+  </section>
+
+  <section class="connect">
+    <h2>Connect</h2>
+    <p><span class="social-label">✉ Email:</span> <a href="mailto:devinzspace@me.com">devinzspace@me.com</a></p>
+    <p><span class="social-label">♪ SoundCloud:</span> <a href="https://soundcloud.com/aliendevinmoonbeam" target="_blank">soundcloud.com/aliendevinmoonbeam</a></p>
+    <p><span class="social-label"> Apple Music:</span> <a href="https://music.apple.com/profile/DevinZspace" target="_blank">music.apple.com/profile/DevinZspace</a></p>
+    <p><span class="social-label">☎ Instagram:</span> <a href="https://www.instagram.com/imbiginjapan?igsh=MWo4MXZpbjd4ejhtMw%3D%3D&utm_source=qr" target="_blank">@imbiginjapan</a></p>
+    <p><span class="social-label">⌂ Location:</span> Miami, FL</p>
   </section>
 
   <footer>
-      <p>&copy; 2025 Velvius. From the Moon.</p>
+    <p>&copy; 2025 Velvius. From the Moon.</p>
   </footer>
 </body>
 </html>
