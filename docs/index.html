@@ -15,18 +15,40 @@
       max-width: 800px;
       text-align: justify;
     }
+
     pre {
       white-space: pre-wrap;
       font-family: monospace;
       line-height: 1.2;
       margin-bottom: 1rem;
     }
+
+    .ascii-logo {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
     .ascii-logo span {
       background: linear-gradient(to right, #00ffff, #ff00ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
+
+    .ascii-message {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #b266ff;
+      animation: blink 1.4s infinite;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
     h1, h2 {
       border-bottom: 1px solid #666;
       padding-bottom: 0.25rem;
@@ -34,17 +56,21 @@
       color: #00ffcc;
       font-weight: normal;
     }
+
     a {
       color: #ff66cc;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
     ul {
       list-style: square;
       margin-left: 1.25rem;
     }
+
     footer {
       border-top: 1px solid #666;
       margin-top: 4rem;
@@ -52,20 +78,37 @@
       color: #666;
       text-align: center;
     }
+
     .social-label {
       color: #666;
     }
-    .connect p {
-      margin: 0.1rem 0;
+
+    .connect {
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-top: 2rem;
     }
+
+    .connect p {
+      margin: 0.4rem 0;
+    }
+
     .corner-gif {
       position: fixed;
-      top: 10px;
+      bottom: 10px;
       right: 10px;
       width: 100px;
       height: auto;
       z-index: 999;
       pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      .ascii-logo pre {
+        font-size: 8px;
+        line-height: 1;
+      }
     }
   </style>
 </head>
@@ -73,20 +116,14 @@
   <img src="IMG_0112.GIF" alt="floating gif" class="corner-gif">
 
   <header class="ascii-logo">
-    <pre><span>                                                                                             
-                                                                                             
-         %%         %%  %%%%%%%%%% %%          %%         %% %%  %%          %%   %%%%%%%%%         
-         %%        %%   %          %%          %%        %%  %%  %%          %% %%@       %         
-         %%       %%    %          %%          %%       %%   %%  %%          %% %%                  
-         %%      %%     %          %%          %%      %%    %%  %%          %% %%                  
-         %%     %%      %          %%          %%     %%     %%  %%          %%   %%%               
-         %%    %%       %%%%%%%%   %%          %%    %%      %%  %%          %%      @%%%%          
-         %%   %%        %          %%          %%   %%       %%  %%          %%          @%%        
-         %%  %%         %          %%          %%  %%        %%  %%          %%            %@       
-         %% %%          %          %%          %% %%         %%   %%        %%  %%        %%        
-         %%%%           %          %%          %%%%          %%    %%%    @%%    %%%    %%%         
-         @%%            %%%%%%%%%% %%%%%%%%%%% %%@            %       %%%%%         %%%%            
+    <pre><span>
+      ░░    ░ ░░░░░ ░░    ░░   ░░ ░░ ░░   ░░   ░░        
+      ▒▒  ▒▒  ▒▒    ▒▒    ▒▒  ▒▒  ▒▒ ▒▒   ▒▒ ▒▒          
+      ▒▒ ▒▒   ▒▒▒▒  ▒▒    ▒▒ ▒▒   ▒▒ ▒▒   ▒▒  ▒▒▒▓       
+      ▓▓▓▓    ▓▓    ▓▓    ▓▓▓     ▓▓ ▓▓   ▓▓      ▓      
+      ██      █████ █████ ██      ██   ███    ████      
     </span></pre>
+    <div class="ascii-message">SOUND IS THE SIGNAL // RHYTHM IS THE CODE</div>
   </header>
 
   <section>
@@ -99,7 +136,7 @@
 
   <section>
     <h2>About</h2>
-    <p>Velvius is about urgency—like he’s playing as if his life depends on it, and somehow he’s still smiling through the tears. His sets hit hard but leave you better than they found you. They carry that rush of being alive at the exact right moment in time—when everything around you blurs into shadows, and all that’s left is the sound, the pulse, and the world inside his head pulling you into it.</p>
+    <p>There's a sense of urgency with Velvius, like he's playing as if his life depends on it, and somehow he's still smiling through all the tears. The sound hits hard. It's controlled chaos. Pressure and release, light and dark.The kind of set that feels like it was built for a room, so dark, you forget where the walls are, lit only by brief flashes of color and the pulse around you. It walks a line between emotional and explosive: part hypnotic journey, part full-body exorcism. One moment you're locked into a groove that could last forever; the next, you're spiraling into something harder, faster. More alive. It's not just mixing–it's transmission.</p>
     <p>You are here, reading this, because trillions of impossible moments aligned perfectly. Your breath is a rhythm. Your thoughts are electricity. You are standing on the edge of infinity, and the fact that you exist at all is the rarest thing the universe has ever done.</p>
   </section>
 
@@ -117,4 +154,3 @@
   </footer>
 </body>
 </html>
-
