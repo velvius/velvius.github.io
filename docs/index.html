@@ -94,8 +94,8 @@
       margin: 0.4rem 0;
     }
 
-    /* Allow the GIF to be clickable */
-    .corner-gif {
+    /* Clickable GIF */
+    #openPlayer {
       position: fixed;
       top: 10px;
       right: 10px;
@@ -106,34 +106,49 @@
       pointer-events: auto;
     }
 
-    /* Modal styles for MP3 player */
-    #playerModal {
+    /* Banner styles */
+    #playerBanner {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
       display: none;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      background: 
+        linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0)),
+        linear-gradient(135deg, #00ffcc, #ff66cc);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.8);
       z-index: 1000;
     }
 
-    #playerModal button {
+    #playerBanner .banner-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    #playerBanner button#closeBanner {
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-right: 1rem;
+    }
+
+    #trackSelect {
       background: #222;
       color: #00ffcc;
       border: 1px solid #00ffcc;
-      padding: 0.5rem 1rem;
-      margin-bottom: 1rem;
+      padding: 0.25rem;
       font-family: "Courier New", monospace;
-      cursor: pointer;
-      border-radius: 4px;
     }
 
-    #playerModal audio {
-      width: 80%;
+    #audioPlayer {
+      flex-grow: 1;
     }
 
     @media (max-width: 480px) {
@@ -141,26 +156,32 @@
         font-size: 8px;
         line-height: 1;
       }
-      .corner-gif {
+      #openPlayer {
         width: 40px;
       }
-      #playerModal audio {
-        width: 95%;
+      #trackSelect {
+        font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Clickable GIF opens the player -->
-  <img src="IMG_0112.GIF" alt="floating gif" id="openPlayer" class="corner-gif">
+  <!-- Clickable GIF -->
+  <img src="IMG_0112.GIF" alt="floating gif" id="openPlayer">
 
-  <!-- MP3 Player Modal -->
-  <div id="playerModal">
-    <button id="closePlayer">Back</button>
-    <audio id="audioPlayer" controls>
-      <source src="Night_Falls.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
+  <!-- Top banner player -->
+  <div id="playerBanner">
+    <button id="closeBanner">×</button>
+    <div class="banner-content">
+      <select id="trackSelect">
+        <option value="Night_Falls.mp3">Night Falls</option>
+        <option value="Alone_With_You.mp3">Alone With You</option>
+      </select>
+      <audio id="audioPlayer" controls>
+        <source src="Night_Falls.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
   </div>
 
   <header class="ascii-logo">
@@ -171,7 +192,7 @@
       ▓▓▓▓    ▓▓    ▓▓    ▓▓▓     ▓▓ ▓▓   ▓▓      ▓      
       ██      █████ █████ ██      ██   ███    ████      
     </span></pre>
-    <div class="ascii-message">WELCOME BACK, BITCHES. VELVIUS MISSED YOU.</div>
+    <div class="ascii-message">WELCOME BACK, BITCHES. TAP THAT .GIF FOR SOME SOUNDS.</div>
   </header>
 
   <section>
@@ -186,8 +207,7 @@
     <h2>About</h2>
     <p>I often find myself at a point playing like my life’s on the line. Sometimes, the universe takes over, and the set breathes. It lives. It just happens.</p>
     <p>Feel yourself as one of a million tiny dark hairs––bouncing, electric, charged. Alive. Above you? Light fractures. Colors melt. Sound weaves into the air. Everything bleeds into everything. In that moment, rules vanish. There’s only movement. Raw, untamed motion. I’m sorry for any slip or miss. Shits gnarly, and I’m looking to improve, always.</p>
-    <p>This moment doesn’t need to make sense. Actually, it’s beyond any sense. The best days aren’t purely logical. They’re wild and free. They pulse in your veins. So don’t just watch the chaos. Be it! Let it carry you. That’s where the light lives! Where the music lifts us, binds us, and sets our souls free.
-       –Velvius</p>
+    <p>This moment doesn’t need to make sense. Actually, it’s beyond any sense. The best days aren’t purely logical. They’re wild and free. They pulse in your veins. So don’t just watch the chaos. Be it! Let it carry you. That’s where the light lives! Where the music lifts us, binds us, and sets our souls free.       –Velvius</p>
     <p style="margin-top: 3rem; font-style: italic; font-size: 1.1em; text-align: center; color: #ff99cc;">You are here, reading this, because trillions of impossible moments aligned perfectly. Your breath is a rhythm. Your thoughts are electricity. You are standing on the edge of infinity, and the fact that you exist at all is the rarest thing the universe has ever done.</p>
   </section>
 
@@ -205,19 +225,33 @@
   </footer>
 
   <script>
-    // Open modal/player
-    document.getElementById('openPlayer').addEventListener('click', function() {
-      document.getElementById('playerModal').style.display = 'flex';
+    // Toggle banner
+    const openBtn = document.getElementById('openPlayer');
+    const banner = document.getElementById('playerBanner');
+    const closeBtn = document.getElementById('closeBanner');
+    openBtn.addEventListener('click', () => {
+      banner.style.display = 'flex';
       document.getElementById('audioPlayer').play();
     });
-    // Close modal/player
-    document.getElementById('closePlayer').addEventListener('click', function() {
-      var audio = document.getElementById('audioPlayer');
-      audio.pause();
-      audio.currentTime = 0;
-      document.getElementById('playerModal').style.display = 'none';
+    closeBtn.addEventListener('click', () => {
+      banner.style.display = 'none';
+    });
+
+    // Track selection
+    const trackSelect = document.getElementById('trackSelect');
+    trackSelect.addEventListener('change', function() {
+      const player = document.getElementById('audioPlayer');
+      player.src = this.value;
+      player.load();
+      player.play();
+    });
+
+    // Autoplay on load (note: may be blocked by browser policies)
+    window.addEventListener('load', () => {
+      const player = document.getElementById('audioPlayer');
+      player.autoplay = true;
+      player.load();
     });
   </script>
 </body>
 </html>
-
