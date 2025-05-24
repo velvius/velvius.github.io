@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Velvius</title>
   <style>
-    /* Global */
-    *, *::before, *::after { box-sizing: border-box; }
     body {
       background-color: #000;
       color: #00ffcc;
@@ -18,74 +16,130 @@
       text-align: justify;
     }
 
-    /* Logo ASCII */
-    .ascii-logo { text-align: center; margin-bottom: 0.5rem; }
+    pre {
+      white-space: pre-wrap;
+      font-family: monospace;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .ascii-logo {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
     .ascii-logo span {
       background: linear-gradient(to right, #00ffff, #ff00ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
+
     .ascii-message {
       text-align: center;
       font-size: 0.9rem;
       color: #b266ff;
       animation: blink 1.4s infinite;
-      margin: -0.5rem 0 2rem;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
     }
+
     @keyframes blink {
-      0%,50%,100% { opacity: 1; }
-      25%,75%   { opacity: 0; }
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
     }
 
-    /* Sections */
-    h2 { border-bottom: 1px solid #666; padding-bottom: 0.25rem; margin-top: 2.5rem; color: #00ffcc; font-weight: normal; }
-    a { color: #ff66cc; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    ul { list-style: square; margin-left: 1.25rem; }
-    section { margin: 4rem 0; }
-    footer { border-top: 1px solid #666; margin-top: 4rem; padding-top: 1rem; color: #666; text-align: center; }
+    h1, h2 {
+      border-bottom: 1px solid #666;
+      padding-bottom: 0.25rem;
+      margin-top: 2.5rem;
+      color: #00ffcc;
+      font-weight: normal;
+    }
 
-    /* Connect */
-    .social-label { color: #666; }
-    .connect { text-align: left; font-size: 1rem; line-height: 1.8; margin-top: 2rem; }
-    .connect p { margin: 0.4rem 0; }
+    a {
+      color: #ff66cc;
+      text-decoration: none;
+    }
 
-    /* Clickable GIF */
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: square;
+      margin-left: 1.25rem;
+    }
+
+    section {
+      margin: 4rem 0;
+    }
+
+    footer {
+      border-top: 1px solid #666;
+      margin-top: 4rem;
+      padding-top: 1rem;
+      color: #666;
+      text-align: center;
+    }
+
+    .social-label {
+      color: #666;
+    }
+
+    .connect {
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-top: 2rem;
+    }
+
+    .connect p {
+      margin: 0.4rem 0;
+    }
+
     #openPlayer {
-      position: fixed; top: 10px; right: 10px;
+      position: fixed;
+      top: 10px;
+      right: 10px;
       width: 72px;
-      z-index: 999;
       cursor: pointer;
+      z-index: 999;
     }
 
-    /* Player Banner */
     #playerBanner {
-      position: fixed; top: 0; left: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       display: none;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       padding: 0.5rem 1rem;
-      background: 
+      background:
         linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.2)),
         linear-gradient(135deg, #00ffcc, #ff66cc);
       box-shadow: 0 2px 10px rgba(0,0,0,0.8);
       z-index: 1000;
     }
-    .banner-content {
+
+    #playerBanner .banner-content {
       display: flex;
       align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      width: 100%;
-      max-width: 500px;
-      overflow-x: auto;
+      gap: 1rem;
     }
+
     #playerBanner button#closeBanner {
-      background: none; border: none; color: #000;
-      font-size: 1.5rem; cursor: pointer;
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-right: 1rem;
     }
+
     #trackSelect {
       background: #222;
       color: #00ffcc;
@@ -93,28 +147,35 @@
       padding: 0.25rem;
       font-family: "Courier New", monospace;
     }
+
     #audioPlayer {
       width: 100%;
-      max-width: 100%;
+      max-width: 400px;
     }
 
-    /* Responsive */
     @media (max-width: 480px) {
-      .ascii-logo pre { font-size: 8px; line-height: 1; }
-      #openPlayer { width: 54px; }
-      #trackSelect { font-size: 0.8rem; }
-      .banner-content { max-width: 90vw; }
+      .ascii-logo pre {
+        font-size: 8px;
+        line-height: 1;
+      }
+      #openPlayer {
+        width: 54px;
+      }
+      #trackSelect {
+        font-size: 0.8rem;
+      }
+      #audioPlayer {
+        max-width: 90vw;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Clickable GIF -->
   <img src="IMG_0112.GIF" alt="floating gif" id="openPlayer">
 
-  <!-- Top banner player -->
   <div id="playerBanner">
+    <button id="closeBanner">×</button>
     <div class="banner-content">
-      <button id="closeBanner">×</button>
       <select id="trackSelect">
         <option value="Night_Falls.mp3">Night Falls</option>
         <option value="Alone_With_You.mp3">Alone With You</option>
@@ -160,7 +221,7 @@
     <p><span class="social-label">✉ Email:</span> <a href="mailto:devinzspace@me.com">devinzspace@me.com</a></p>
     <p><span class="social-label">♪ SoundCloud:</span> <a href="https://soundcloud.com/aliendevinmoonbeam" target="_blank">soundcloud.com/aliendevinmoonbeam</a></p>
     <p><span class="social-label"> Apple Music:</span> <a href="https://music.apple.com/profile/DevinZspace" target="_blank">music.apple.com/profile/DevinZspace</a></p>
-    <p><span class="social-label">☎ Instagram:</span> <a href="https://www.instagram.com/imbiginjapan?igsh=MWo4NXZpbjd4ejhtMw%3D%3D&utm_source=qr" target="_blank">@imbiginjapan</a></p>
+    <p><span class="social-label">☎ Instagram:</span> <a href="https://www.instagram.com/imbiginjapan" target="_blank">@imbiginjapan</a></p>
   </section>
 
   <footer>
@@ -168,20 +229,7 @@
   </footer>
 
   <script>
-    // Toggle banner
     const openBtn = document.getElementById('openPlayer');
     const banner = document.getElementById('playerBanner');
-    const closeBtn = document.getElementById('closeBanner');
-    openBtn.addEventListener('click', () => banner.style.display = 'flex');
-    closeBtn.addEventListener('click', () => banner.style.display = 'none');
-
-    // Track selection
-    document.getElementById('trackSelect').addEventListener('change', function() {
-      const player = document.getElementById('audioPlayer');
-      player.src = this.value;
-      player.load();
-      player.play();
-    });
-  </script>
-</body>
-</html>
+    const closeBtn = document.getElementById('closeBan')}
+]}
