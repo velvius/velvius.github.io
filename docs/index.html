@@ -131,8 +131,9 @@
     #playerBanner .banner-content {
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
       gap: 1rem;
-      width: 100%;
     }
 
     #playerBanner button#closeBanner {
@@ -152,7 +153,10 @@
       font-family: "Courier New", monospace;
     }
 
+    /* Restrict audio player width */
     #audioPlayer {
+      width: 100%;
+      max-width: 400px;
       flex-grow: 1;
     }
 
@@ -166,6 +170,9 @@
       }
       #trackSelect {
         font-size: 0.8rem;
+      }
+      #audioPlayer {
+        max-width: 90vw;
       }
     }
   </style>
@@ -258,4 +265,3 @@
   </script>
 </body>
 </html>
-
